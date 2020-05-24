@@ -3,7 +3,7 @@
 
 ### JGonçaloTS
 
-##Description (by me) 
+## Description (by me) 
 For this project. We need to use the knowledge acquired in the SQL program.
 
 Using the Sakilla database. We have the mission to obtain results from queries and from them create a presentation about the interesting data found using the knowledge extracted through the database.
@@ -30,7 +30,7 @@ I learned a lot! I have a lot to improve!
 But the important thing is that I really enjoyed doing this project!
 
 ## Project Submission
-[Project Submission] (https://drive.google.com/file/d/1i-9mp7osxQn_8wbs1Bo9OekqH2oyBaiu/view?usp=sharing)
+[Project Submission](https://drive.google.com/file/d/1i-9mp7osxQn_8wbs1Bo9OekqH2oyBaiu/view?usp=sharing)
 
 
 
