@@ -10,7 +10,7 @@ WITH t1 AS (SELECT (first_name || ' ' || last_name) AS name,
                    p.payment_date
               FROM customer AS c
                    JOIN payment AS p
-                    ON c.customer_id = p.customer_id),
+                   ON c.customer_id = p.customer_id),
 
      t2 AS (SELECT t1.customer_id
               FROM t1
@@ -36,7 +36,7 @@ t3 AS (SELECT t1.name,
 
 SELECT t3.*,
        CASE
-           WHEN t3.lead_dif = (SELECT MAX(t3.lead_dif) FROM t3 ORDER BY 1 DESC LIMIT 1) THEN 'this is the maximum difference'
+           WHEN t3.lead_dif = (SELECT MAX(t3.lead_dif) FROM t3 ORDER BY 1 DESC LIMIT 1) THEN 'MAX DIFF'
            ELSE NULL
            END AS is_max					
   FROM t3
