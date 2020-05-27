@@ -1,0 +1,273 @@
+SELECT id, occurred_at, total_amt_usd
+FROM orders
+ORDER BY occurred_at
+LIMIT 10;
+
+SELECT id, account_id,total_amt_usd
+FROM orders
+ORDER BY total_amt_usd DESC
+LIMIT 5;
+
+SELECT id, account_id, total_amt_usd
+FROM orders
+ORDER BY total_amt_usd
+LIMIT 20;
+
+
+-- WHERE
+SELECT *
+FROM orders
+WHERE gloss_amt_usd >= 1000
+LIMIT 5
+
+SELECT *
+FROM orders
+WHERE total_amt_usd < 500
+LIMIT 10
+
+---- Where com valores nao numericos lembrar de usar aspas simples ' '
+SELECT name, website, primary_poc
+FROM accounts
+WHERE name = 'Exon Mobil
+
+Create Table accounts (name);
+
+-- EXERCICIO PARA USAR COLUNAS DERIVADAS
+SELECT id, (standard_amt_usd/total_amt_usd)*100
+AS std_percent, total_amt_usd
+FROM orders
+LIMIT 10;
+
+SELECT (standard_amt_usd/standard_qty) AS standart_paper, id, account_id
+FROM orders
+LIMIT 10;
+
+SELECT (poster_amt_usd/total_amt_usd)*100 AS poster_percent, id, account_id
+FROM orders
+LIMIT 10;
+
+-- CORREÇÃO DA QUERY PELO UDACITY
+SELECT id, account_id, standard_amt_usd/standard_qty AS unit_price
+FROM orders
+LIMIT 10;
+
+SELECT id, account_id, poster_amt_usd/(standard_amt_usd + gloss_amt_usd + poster_amt_usd) AS post_per
+FROM orders
+LIMIT 10;
+
+______________________
+USANDO % para utilizar o LIKE - Ultima QUERY escrita por mim mesmo para praticar ORDER BY, LIMIT, AS, LIKE
+
+SELECT name
+FROM accounts
+WHERE name LIKE 'C%';
+
+SELECT name
+FROM accounts
+WHERE name like '%one%';
+
+SELECT name
+FROM accounts
+WHERE name LIKE '%s';
+
+SELECT name, id, (id + sales_rep_id) AS merge_name
+FROM accounts
+WHERE name LIKE '%s'
+ORDER BY id DESC
+LIMIT 10;
+
+________________________________________________________-
+-- EXERCICIO para treinar IN
+1)	Use a tabela de contas para encontrar o nome da conta, primary_poc e sales_rep_id para Walmart, Target e Nordstrom
+2)	Use a tabela web_events para encontrar todas as informações sobre indivíduos que foram contatados por meio do canal orgânico ou do adwords.
+
+SELECT name, primary_poc, sales_rep_id
+FROM accounts
+WHERE name IN ('Walmart', 'Target', 'Nordstrom');
+
+SELECT *
+FROM web_events
+WHERE channel IN ('organic', 'adwords');
+
+___________________________________________________________--
+1)	Use a tabela accounts para encontrar account name, primary poc, and sales rep id do representante de vendas de todas as lojas, exceto Walmart, Target e Nordstrom.
+2)	Use a tabela web_events para encontrar todas as informações sobre indivíduos que foram contatados por qualquer método, exceto usando métodos orgânicos ou do adwords.
+Use a tabela de contas para encontrar:
+1)	Todas as empresas cujos nomes não começam com 'C'.
+2)	Todas as empresas cujos nomes não contêm a string 'one' em algum lugar do nome.
+3)	Todas as empresas cujos nomes não terminam com 's'.
+
+SELECT name, primary_poc, sales_rep_id
+FROM accounts
+WHERE name NOT IN('Walmart', 'target', 'Nordstrom');
+
+SELECT *
+FROM web_events
+WHERE channel NOT IN ('organic', 'adwords');
+
+SELECT name
+FROM accounts
+WHERE name NOT LIKE 'C%';
+
+SELECT name
+FROM accounts
+WHERE name NOT LIKE '%one%';
+
+SELECT name
+FROM accounts
+WHERE name NOT LIKE '%S';
+________________________________________________________
+
+SELECT *
+FROM orders
+WHERE standard_qty > 1000 AND gloss_qty = 0 AND  poster_qty = 0;
+
+SELECT name
+FROM accounts
+WHERE name NOT LIKE 'C%' AND name LIKE '%S';
+
+SELECT occurred_at, gloss_qty
+FROM orders
+WHERE gloss_qty BETWEEN 24 AND 29;
+
+SELECT *
+FROM web_events
+WHERE channel IN ('organic', 'adwords') AND occurred_at BETWEEN '2016-01-01' AND '2017-01-01'
+ORDER BY occurred_at DESC;
+
+____________________________________________________________-
+SELECT id
+FROM orders
+WHERE (gloss_qty > 4000 OR poster_qty > 4000);
+
+SELECT orders
+FROM orders
+WHERE standard_qty = 0 AND (gloss_qty = 0 OR poster_qty > 1000);
+
+SELECT name
+FROM accounts
+WHERE name LIKE 'C%' OR name like 'W%'
+AND primary_poc IN ('ana', 'Ana')
+
+
+SELECT id
+FROM orders
+WHERE (gloss_qty > 4000 OR poster_qty > 4000);
+
+SELECT *
+FROM orders
+WHERE standard_qty = 0 AND (gloss_qty = 0 OR poster_qty > 1000);
+
+SELECT name
+FROM accounts
+WHERE (name LIKE 'C%' OR name like 'W%')
+AND ((primary_poc LIKE ‘%ana%’ OR primary_poc LIKE ‘%Ana%’)
+AND primary_poc NOT LIKE ‘%eana%’);
+
+_______________________________________________
+A.	Tente extrair todos os dados da tabela de contas e todos os dados da tabela de pedidos.
+B.	Tente puxar standard_qty, gloss_qty e poster_qty da tabela de pedidos e o site e o primary_poc da tabela de contas.
+
+SELECT accounts.*
+FROM accounts
+JOIN orders.*
+ON accounts
+
+CORREÇÃO
+SELECT orders.*, accounts.*
+FROM orders
+JOIN accounts
+ON orders.account_id = accounts.id;
+
+
+SELECT standard_qty, gloss_qty, poster_qty
+FROM orders
+JOIN accounts
+ON web_site.account_id = accounts.id;
+
+CORREÇÃO
+SELECT orders.standard_qty,
+orders.gloss_qty,
+orders.poster_qty,
+accounts.website,
+accounts.primary_poc
+FROM orders
+JOIN accounts
+ON orders.account_id = accounts.id;
+
+
+
+
+JOINS - ALIAS, ON
+
+SELECT a.primary_poc, w.occurred_at, w.channel, a.name
+FROM web_events w
+JOIN accounts a
+ON  w.account_id = a.id
+WHERE a.name = 'Walmart';
+
+SELECT r.name estate, s.name rep, a.name accounted
+FROM sales_reps s
+JOIN region r
+ON s.region_id  = r.id
+JOIN accounts a
+ON a.sales_rep_id = s.id
+ORDER BY a.name;
+
+SELECT r.name region, a.name account, o.total_amt_usd/(o.total + 0.01) unit_price
+FROM region r
+JOIN sales_reps s
+ON s.region_id = r.id
+JOIN accounts a
+ON a.sales_rep_id = s.id
+JOIN orders o
+ON o.account_id = a.id;
+
+QUESTIONS 20 Mode 2
+SELECT r.name region, s.name rep, a.name account
+FROM sales_reps s
+JOIN region r
+ON s.region_id = r.id
+JOIN accounts a
+ON a.sales_rep_id = s	WHERE r.name = 'Midwest'
+ORDER BY a.name DESC;
+
+SELECT r.name region, s.name rep, a.name account
+FROM sales_reps s
+JOIN region r
+ON s.region_id = r.id
+JOIN accounts a
+ON a.sales_rep_id = s.id
+WHERE r.name = 'Midwest' AND s.name LIKE 'S%'
+ORDER BY a.name;
+
+SELECT r.name region, s.name rep, a.name account
+FROM sales_reps s
+JOIN region r
+ON s.region_id = r.id
+JOIN accounts a
+ON a.sales_rep_id = s.id
+WHERE r.name = 'Midwest' AND s.name LIKE '% K%'
+ORDER BY a.name;
+
+SELECT r.name region, a.name account, o.total_amt_usd/(o.total + 0.01) unit_price
+FROM region r
+JOIN sales_reps s
+ON s.region = r. id
+JOIN accounts a
+ON a.sales_rep_id = s.id
+JOIN orders o
+ON o.account_id = a.id
+WHERE o.standart_qty >100;
+
+SELECT r.name region, a.name account, o.total_amt_usd/(o.total + 0.01) unit_price
+FROM region r 
+JOIN sales_reps s
+ON s.region_id= r.id
+JOIN accounts a 
+ON a.sales_rep_id = s.id
+JOIN orders o
+ON o.account_id = a.id 
+WHERE o.standard_qty > 100 AND o.poster_qty > 50
+ORDER BY unit_price;
+
