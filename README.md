@@ -31,6 +31,16 @@ But the important thing is that I really enjoyed doing this project!
 
 ## Project Submission
 [Project Submission](https://drive.google.com/file/d/1i-9mp7osxQn_8wbs1Bo9OekqH2oyBaiu/view?usp=sharing)
+You can find the queries [here](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/1ST-PROJECT/Project_Queries)
+
+My experience: This project was very interesting to insert me in the world of data. SQL is still a powerful tool for data analysis even with Big data and NoSQL databases with great expression in the market. It was extremely productive!
+
+
+##Project 2 - IN PROGRESS 
+
+##Project 3 - Post Your Work on Github
+
+
 
 
 
