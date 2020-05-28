@@ -1,7 +1,7 @@
 # Programming With Data Science With Python 
 ## 1ST Project = Investigate a Database (SQL)
 
-### JGonçaloTS
+### jgoncsilva
 
 ## Description (by me) 
 For this project. We need to use the knowledge acquired in the SQL program.
