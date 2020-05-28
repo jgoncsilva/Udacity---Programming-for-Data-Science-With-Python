@@ -1,5 +1,5 @@
 # Programming With Data Science With Python 
-## 1ST Project = Investigate a Database 
+## 1ST Project = Investigate a Database (SQL)
 
 ### JGonçaloTS
 
@@ -36,9 +36,17 @@ You can find the queries [here](https://github.com/jgoncsilva/Udacity---Programm
 My experience: This project was very interesting to insert me in the world of data. SQL is still a powerful tool for data analysis even with Big data and NoSQL databases with great expression in the market. It was extremely productive!
 
 
-## Project 2 - IN PROGRESS 
+## Project 2 - Explore US Bikeshare Data (Python)
+...In progress...
 
-## Project 3 - Post Your Work on Github
+## Project 3 - Post Your Work on Github (Git)
+
+In this project, you will create a GitHub repository and your local repository. You will work on a repo for your BikeShare project, making multiple branches, making edits to files on those branches (e.g., a readme file and your Python code), and then you will commit the changes to your remote repository.
+
+##### The results still in progress... (28-05-2020)
+
+
+You can find the working progress of course [here](https://github.com/jgoncsilva/Git-github-pratice)
 
 
 
