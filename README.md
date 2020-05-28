@@ -36,9 +36,9 @@ You can find the queries [here](https://github.com/jgoncsilva/Udacity---Programm
 My experience: This project was very interesting to insert me in the world of data. SQL is still a powerful tool for data analysis even with Big data and NoSQL databases with great expression in the market. It was extremely productive!
 
 
-##Project 2 - IN PROGRESS 
+## Project 2 - IN PROGRESS 
 
-##Project 3 - Post Your Work on Github
+## Project 3 - Post Your Work on Github
 
 
 
