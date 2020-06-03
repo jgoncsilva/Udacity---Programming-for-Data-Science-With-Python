@@ -37,7 +37,7 @@ My experience: This project was very interesting to insert me in the world of da
 
 
 ## Project 2 - Explore US Bikeshare Data (Python)
-...In progress...
+...In progress...[here](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/2ND%20-%20PROJECT%20(Python)/Course_Training)
 
 ## Project 3 - Post Your Work on Github (Git)
 
