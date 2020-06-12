@@ -1,0 +1,241 @@
+Scripting With Raw Input
+We can get raw input from the user with the built-in function input, which takes in an optional string argument that you can use to specify a message to show to the user when asking for input.
+
+name = input("Enter your name: ")
+print("Hello there, {}!".format(name.title()))
+This prompts the user to enter a name and then uses the input in a greeting. The input function takes in whatever the user types and stores it as a string. If you want to interpret their input as something other than a string, like an integer, as in the example below, you need to wrap the result with the new type to convert it from a string.
+
+num = int(input("Enter an integer"))
+print("hello" * num)
+We can also interpret user input as a Python expression using the built-in function eval. This function evaluates a string as a line of Python.
+
+result = eval(input("Enter an expression: "))
+print(result)
+If the user inputs 2 * 3, this outputs 6.
+
+Errors And Exceptions
+Syntax errors occur when Python can’t interpret our code, since we didn’t follow the correct syntax for Python. These are errors you’re likely to get when you make a typo, or you’re first starting to learn Python.
+
+Exceptions occur when unexpected things happen during execution of a program, even if the code is syntactically correct. There are different types of built-in exceptions in Python, and you can see which exception is thrown in the error message.
+
+Great job! There are two kinds of errors in Python - syntax errors and exceptions. Syntax errors occur when you don't use correct syntax and Python doesn't know how to run your code. Exceptions occur when Python runs into unexpected situations while executing your code and can happen even if you used correct syntax.
+
+
+
+Se quiser que esse
+
+We can use try statements to handle exceptions. There are four clauses you can use (one more in addition to those shown in the video).
+
+try: This is the only mandatory clause in a try statement. The code in this block is the first thing that Python runs in a try statement.
+except: If Python runs into an exception while running the try block, it will jump to the except block that handles that exception.
+else: If Python runs into no exceptions while running the try block, it will run the code in this block after running the try block.
+finally: Before Python leaves this try statement, it will run the code in this finally block under any conditions, even if it's ending the program. E.g., if Python ran into an error while running code in the except or else block, this finally block will still be executed before stopping the program.
+
+
+Specifying Exceptions
+We can actually specify which error we want to handle in an except block like this:
+
+try:
+    # some code
+except ValueError:
+    # some code
+Now, it catches the ValueError exception, but not other exceptions. If we want this handler to address more than one type of exception, we can include a parenthesized tuple after the except with the exceptions.
+
+try:
+    # some code
+except (ValueError, KeyboardInterrupt):
+    # some code
+Or, if we want to execute different blocks of code depending on the exception, you can have multiple except blocks.
+
+try:
+    # some code
+except ValueError:
+    # some code
+except KeyboardInterrupt:
+    # some code
+
+
+    Handling Input Errors
+The party_planner function below takes as input a number of party people and cookies and figures out how many cookies each person gets at the party, assuming equitable distribution of cookies. Then, it returns that number along with how many cookies will be left over.
+
+Right now, calling the function with an input of 0 people will cause an error, because it creates a ZeroDivisionError exception. Edit the party_planner function to handle this invalid input. If it runs into this exception, it should print a warning message to the user and request they input a different number of people.
+
+After you've edited the function, try running the file again and make sure it does what you intended. Try it with several different input values, including 0 and other values for the number of people.
+
+Using this workspace
+In some pages of our classroom, we'll provide you a workspace like the one below that will provide you a programming environment with a Terminal and code editor, so you can do all your work right here. Here are a few tips orienting you to this kind of workspace.
+
+On the top panel is a code editor where you can edit your Python file. Scroll up and down in this panel to see all the code. You can also expand or shrink this panel by clicking and dragging its bottom border.
+
+On the bottom panel, you can execute this Python file by clicking on New Terminal and entering python handling_errors.py on the command line.
+
+Reading and Writing Files
+To follow along with the example above, create a new file in Atom, copy the following text into it, and save it as some_file.txt!
+
+Hello!!
+
+You've read the contents of this file!
+Here's how we read and write files in Python.
+
+Reading a File
+f = open('my_path/my_file.txt', 'r')
+file_data = f.read()
+f.close()
+First open the file using the built-in function, open. This requires a string that shows the path to the file. The open function returns a file object, which is a Python object through which Python interacts with the file itself. Here, we assign this object to the variable f.
+There are optional parameters you can specify in the open function. One is the mode in which we open the file. Here, we use r or read only. This is actually the default value for the mode argument.
+Use the read method to access the contents from the file object. This read method takes the text contained in a file and puts it into a string. Here, we assign the string returned from this method into the variable file_data.
+When finished with the file, use the close method to free up any system resources taken up by the file.
+Writing to a File
+f = open('my_path/my_file.txt', 'w')
+f.write("Hello there!")
+f.close()
+Open the file in writing ('w') mode. If the file does not exist, Python will create it for you. If you open an existing file in writing mode, any content that it had contained previously will be deleted. If you're interested in adding to an existing file, without deleting its content, you should use the append ('a') mode instead of write.
+Use the write method to add text to the file.
+Close the file when finished.
+Too Many Open Files
+Run the following script in Python to see what happens when you open too many files without closing them!
+
+files = []
+for i in range(10000):
+    files.append(open('some_file.txt', 'r'))
+    print(i)
+
+
+
+    Calling the read Method with an Integer
+In the code you saw earlier, the call to f.read() had no arguments passed to it. This defaults to reading all the remainder of the file from its current position - the whole file. If you pass the read method an integer argument, it will read up to that number of characters, output all of them, and keep the 'window' at that position ready to read on.
+
+Let's see this in an example that uses the following file, camelot.txt:
+
+We're the knights of the round table
+We dance whenever we're able
+Here's a script that reads in the file a little at a time by passing an integer argument to .read().
+
+with open("camelot.txt") as song:
+    print(song.read(2))
+    print(song.read(8))
+    print(song.read())
+Outputs:
+
+We
+'re the 
+knights of the round table
+We dance whenever we're able
+You can try out this example by creating your own camelot.txt and example.py files with the text above.
+
+Each time we called read on the file with an integer argument, it read up to that number of characters, outputted them, and kept the 'window' at that position for the next call to read. This makes moving around in the open file a little tricky, as there aren't many landmarks to navigate by.
+
+Reading Line by Line
+\ns in blocks of text are newline characters. The newline character marks the end of a line, and tells a program (such as a text editor) to go down to the next line. However, looking at the stream of characters in the file, \n is just another character.
+
+Fortunately, Python knows that these are special characters and you can ask it to read one line at a time. Let's try it!
+
+Conveniently, Python will loop over the lines of a file using the syntax for line in file. I can use this to create a list of lines in the file. Because each line still has its newline character attached, I remove this using .strip().
+
+camelot_lines = []
+with open("camelot.txt") as f:
+    for line in f:
+        camelot_lines.append(line.strip())
+
+print(camelot_lines)
+Outputs:
+
+["We're the knights of the round table", "We dance whenever we're able"]
+Quiz: Flying Circus Cast List
+You're going to create a list of the actors who appeared in the television programme Monty Python's Flying Circus.
+
+Write a function called create_cast_list that takes a filename as input and returns a list of actors' names. It will be run on the file flying_circus_cast.txt (this information was collected from imdb.com). Each line of that file consists of an actor's name, a comma, and then some (messy) information about roles they played in the programme. You'll need to extract only the name and add it to a list. You might use the .split() method to process each line.
+
+Importing Local Scripts
+We can actually import Python code from other scripts, which is helpful if you are working on a bigger project where you want to organize your code into multiple files and reuse code in those files. If the Python script you want to import is in the same directory as your current script, you just type import followed by the name of the file, without the .py extension.
+
+import useful_functions
+It's the standard convention for import statements to be written at the top of a Python script, each one on a separate line. This import statement creates a module object called useful_functions. Modules are just Python files that contain definitions and statements. To access objects from an imported module, you need to use dot notation.
+
+import useful_functions
+useful_functions.add_five([1, 2, 3, 4])
+We can add an alias to an imported module to reference it with a different name.
+
+import useful_functions as uf
+uf.add_five([1, 2, 3, 4])
+Using a main block
+To avoid running executable statements in a script when it's imported as a module in another script, include these lines in an if __name__ == "__main__" block. Or alternatively, include them in a function called main() and call this in the if main block.
+
+Whenever we run a script like this, Python actually sets a special built-in variable called __name__ for any module. When we run a script, Python recognizes this module as the main program, and sets the __name__ variable for this module to the string "__main__". For any modules that are imported in this script, this built-in __name__ variable is just set to the name of that module. Therefore, the condition if __name__ == "__main__"is just checking whether this module is the main program.
+
+Try It Out!
+Here's the code I used in the video above. Create these scripts in the same directory and run them in your terminal! Experiment with the if main block and accessing objects from the imported module!
+
+# demo.py
+
+import useful_functions as uf
+
+scores = [88, 92, 79, 93, 85]
+
+mean = uf.mean(scores)
+curved = uf.add_five(scores)
+
+mean_c = uf.mean(curved)
+
+print("Scores:", scores)
+print("Original Mean:", mean, " New Mean:", mean_c)
+
+print(__name__)
+print(uf.__name__)
+# useful_functions.py
+
+def mean(num_list):
+    return sum(num_list) / len(num_list)
+
+def add_five(num_list):
+    return [n + 5 for n in num_list]
+
+def main():
+    print("Testing mean function")
+    n_list = [34, 44, 23, 46, 12, 24]
+    correct_mean = 30.5
+    assert(mean(n_list) == correct_mean)
+
+    print("Testing add_five function")
+    correct_list = [39, 49, 28, 51, 17, 29]
+    assert(add_five(n_list) == correct_list)
+
+    print("All tests passed!")
+
+if __name__ == '__main__':
+    main()
+
+
+    Techniques for Importing Modules
+There are other variants of import statements that are useful in different situations.
+
+To import an individual function or class from a module:
+from module_name import object_name
+To import multiple individual objects from a module:
+from module_name import first_object, second_object
+To rename a module:
+import module_name as new_name
+To import an object from a module and rename it:
+from module_name import object_name as new_name
+To import every object individually from a module (DO NOT DO THIS):
+from module_name import *
+If you really want to use all of the objects from a module, use the standard import module_name statement instead and access each of the objects with the dot notation.
+import module_name
+
+
+Practice Question
+For the following practice question you will need to write code in Python in the workspace below. This will allow you to practice the concepts discussed in the Scripting lesson, such as reading and writing files. You will see some older concepts too, but again, we have them there to review and reinforce your understanding of those concepts.
+
+Question: Create a function that opens the flowers.txt, reads every line in it, and saves it as a dictionary. The main (separate) function should take user input (user's first name and last name) and parse the user input to identify the first letter of the first name. It should then use it to print the flower name with the same first letter (from dictionary created in the first function).
+
+Sample Output:
+
+>>> Enter your First [space] Last name only: Bill Newman
+>>> Unique flower name with the first letter: Bellflower
+Using this workspace
+
+We have provided a programming environment with a Terminal and code editor, so you can do all your work right here. Here are a few tips orienting you to this kind of workspace.
+
+On the top panel is a code editor where you can edit the Python file match_lower_name.py. Scroll up and down in this panel to see all the code. You can also expand or shrink this panel by clicking and dragging its bottom border. We have included the flower.txt file that includes the list of unique flower names for each alphabet. You can click on it in the left to open it in a new tab.
+
+On the bottom panel, you can execute your Python file by clicking on New Terminal and entering python match_flower_name.py on the command line.
