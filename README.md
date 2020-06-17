@@ -1,7 +1,6 @@
 # Programming With Data Science With Python 
 ## 1ST Project = Investigate a Database (SQL)
 
-### jgoncsilva
 
 ## Description (by me) 
 For this project. We need to use the knowledge acquired in the SQL program.
@@ -29,7 +28,7 @@ For me it was a challenging project since I had never had any contact with SQL, 
 I learned a lot! I have a lot to improve!
 But the important thing is that I really enjoyed doing this project!
 
-## Project Submission
+### Project Submission
 [Project Submission](https://drive.google.com/file/d/1i-9mp7osxQn_8wbs1Bo9OekqH2oyBaiu/view?usp=sharing)
 You can find the queries [here](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/1ST-PROJECT%20(SQL)/Project_Queries)
 
@@ -37,16 +36,24 @@ My experience: This project was very interesting to insert me in the world of da
 
 
 ## Project 2 - Explore US Bikeshare Data (Python)
-...In progress...[here](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/2ND%20-%20PROJECT%20(Python)/Course_Training)
+
+In this project, the student had to make use of Python to explore data related to bike share systems for three major cities in the United States — Chicago, New York City, and Washington.I had to write code to (a) import the data and answer interesting questions about it by computing descriptive statistics, and (b) write a script that takes in raw input to create an interactive experience in the terminal to present these statistics.
+
+Progress[here](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/2ND%20-%20PROJECT%20(Python)/Course_Training)
+
+### Project Submission
+
+[Project](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/2ND%20-%20PROJECT%20(Python)/Project)
 
 ## Project 3 - Post Your Work on Github (Git)
 
 In this project, you will create a GitHub repository and your local repository. You will work on a repo for your BikeShare project, making multiple branches, making edits to files on those branches (e.g., a readme file and your Python code), and then you will commit the changes to your remote repository.
 
-##### The results still in progress... (28-05-2020)
+This project consisted in using Git and GitHub with a simulated workflow to refactor Project 2
+
+[Progress and Project](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/3RD%20-%20PROJECT(GIT_GITHUB))
 
 
-You can find the working progress of course [here](https://github.com/jgoncsilva/Git-github-pratice)
 
 
 
