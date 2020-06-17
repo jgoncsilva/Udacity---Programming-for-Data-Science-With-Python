@@ -1,0 +1,264 @@
+Command Guide
+Sequencia de comando git para exibir os dados git a
+$ cd C:/Users/user/my_project
+$ git init
+$ git add *.c
+$ git add LICENSE
+$ git commit -m 'Initial project version'
+
+
+$ git fsck - File system check 
+
+git status - Diz em qual branch esta Quantos comitts foram feitos 
+git status -s - Versão short - obtem uma saida simplificada do comando
+em que estado esta o repositorio.
+
+Arquivo nao rastreado ex.
+$ echo 'My Project' > README
+$ git status 
+ use "git rm --cached <file>..." to unstage)
+
+Mudar arquivo que ja foi rastreado
+$ git log - Commits existentes (K J Descer e subir) 
+q - sair 
+$ git log --oneline - Mostra a versao em linha mostrando o SHA e o que foi alterado
+(serve para revisar os commits de um repositorio)
+$git log -p - Mudanças no codigo ou patch feitas nos arquivos
+(Diff e patch) São a mesma coisa
+$ Git Show - apresenta informações sobre o commit em questao 
+$git log --decorate - Mostra as TAGS/FLAGS
+$git log --oneline --decorate - apresenta informações sobre a HEAD branche descrição do commit SHA. 
+ID - SHA apresenta informações sobre esse commit
+$ git log --oneline --decorate --graph --all - Mostra todas as alterações estruturando por 
+SHA - HEAD - Branch  Nome do comit - Tambem mostra alterações.
+
+git log -p --stat - Exibi informações estatisticasacima das informações do patch
+git log -p -w - Mostrar as informações do patch mas nao destaca linhas nas quais ocorreram alterações
+nos espaços em branco
+$ git log --oneline --graph --decorate --all  - Display os commits do repositorio
+
+git show - Mostra o commit, autor, data , mensagem do commit, informação patch
+
+--stat - Para mostrar quantos arquivos foram modificados e o numero de linhas que foram adicionadas/removidas 
+-p - Se o stat for usado tem que usar -p pra mostrar o patch. Caso contrario nao mostra
+-w - ignorar mudanças de espaço em branco 
+
+git add - Adiciona arquivos do diretorio de trabalho pra o na area temporaria (staging index)
+git commit - pega arquivos da area temporaria e salva no repositorio
+git diff - Diferença entre duas versoes de dois arquivos QUE AINDA NAO FORAM COMMITADOS
+ Output igual ao do git log-p
+
+git rm --cached - Para retirar das alterações do commit.
+Porem diferente do RM do Shell nao destroy o arquivo/comando
+
+Git commit no bash gera a tela no VSCODE 
+git config --global core.editor "code --wait"
+Pra configurar tem os comandos
+Se quiser dar commit no git usar : Git commit -m 
+
+# sets up Git with your name
+git config --global user.name "<Your-Full-Name>"
+
+# sets up Git with your email
+git config --global user.email "<your-email-address>"
+
+# makes sure that Git output is colored
+git config --global color.ui auto
+
+# displays the original state in a conflict
+git config --global merge.conflictstyle diff3
+
+git config --list
+git diff - Mesma coisa do git log -p. Porem mstra de forma mais especifica QUAIS ARQUIVOS FORAM modificados
+apenas pelo save. (No commit yet)
+
+.gitignore - Cria uma pasta para que se coloque arquivos que nao quer adicionar ao commit. Pra quando tiver 
+de usar git add . ele nao ser adicionado.
+Globbing é um conceito de conjuntos de caracter curinga com simbolos exemplos abaixo
+
+(blank lines can be used for spacing
+# - marks line as a comment
+* - matches 0 or more characters
+? - matches 1 character
+[abc] - matches a, b, _or_ c
+** - matches nested directories - a/**/z matches
+a/z
+a/b/z
+a/b/c/z)
+EX: samples/*.jpg - Ignora todos os arquivos jpg
+be?rs - Ignora todos os arquivos que tenham b e (qualquer letra/numero/simbol) r s. Como é especifico não ignorara nada alem disso uma vez
+estando no GIT ignore. 
+/* OUTROS BONS EXEMPLOS */
+# ignore all .a files
+*.a
+
+# but do track lib.a, even though you're ignoring .a files above
+!lib.a
+
+# only ignore the TODO file in the current directory, not subdir/TODO
+/TODO
+
+# ignore all files in any directory named build
+build/
+
+# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/*.txt
+
+# ignore all .pdf files in the doc/ directory and any of its subdirectories
+doc/**/*.pdf
+
+$git tag - Adicionar Tags a commits especificos "This is beta version"
+USAR SEMPRE git tag -a (pra criar uma tag anotada)
+DELETAR - git tag -d V1.0 (por ex.) ou git tag --delete
+Se quiser adicionar uma TAG a um commit especifico tem que usar o #SHA - Ou seja
+1º usar git log --oneline / 2º Identificar o SHA /
+3º $ git tag -a v1.0 a87984 
+
+$git branch - Criar branches que permitirão cirar versões paralelas que depois de review poderão 
+ser adicionada a master
+
+$git checkout - Alternar entre branches e tags
+$git checkout sidebar (ex) - Alterna entre as branches
+$git checkout -b - Cria uma branche e altera para esta em um so comando 
+
+$it branch - Mostra qual é a branch que se esta a trabalhar 
+$ git branch + (nome) - Cria nova branch
+Caso queira resolver algo em um commit anterior git branch header fix (SHA do commit)
+Usa git checkout header fix - para mudar para aquele commit e faz as alterações
+$git branch -d - deleta a branch / com D maisculo deleta a branche mesmo se ela tiver com alteraçoes para commit.
+
+$ git merge heading-update - Tip pra criação de branch que vai corrigir erro /Mesma linha alterada nas duas branch
+do qua estao sendo alteradas
+$git merge - Fundir as alterações em diferentes branches
+$git reset --hard HEAD^ 
+
+$git commit --ammend - Altera o commit mais recente (Caso esqueça arquivo ou erre o nome do commit)
+Procedimento é editar o arquivo/salvar/stage/ e usar o ammend - Dai ele nao cria um novo commit mas altera o ultimo commit feito
+
+$git revert <sha> - fornecemos o SHA do commit que desejamos reverter
+ - Reversão ou seja o que foi adicionado sera removidas
+ Nesse caso o git se voce adicionou um A no commit diferente do anterior o comando vai deletar e vice e versa
+
+$git reset - DELETA os commits - Remove itens do repositorio
+$ git reset --mixed - Default - Se usar o reset ou --mixed (mesma coisa) vai para o Working Directory - 
+Se mandar os arquivos para o stage depois e der commit eles terao o mesmo conteudo
+$ git reset --soft - Move para o Stage Index
+$ git reset --hard - Joga fora as alterações feitas no sha 
+
+$git reflog - apaga mas mantem por 30 dias 
+^ - Indica o commit Pai 
+^o commit pai - o seguinte indica o commit pai do commit atual (Head^) (head~) (head~1) branch onde estava quando deu o $git merge
+(head ^^ - head~2) - Avo do commit - 2 antes - Branch que foi mesclada - merged
+(head ^^^ - head~3) - Tataravo do commit  parente de segundo grau - 3 antes dele 
+~ - indica o 1º commit pai
+RESUMO ~ first parent - Commit ligado a branch diretamente
+^ commit de 2 grau ligado 
+
+$git branch backup - Usa no commit mais recente, dai pode voltar para o commit caso cometer erro
+Se criou um backup este comando - 
+$ git checkout -- index.html
+$ git merge backup - 
+
+$git pull  - 
+$git pull origin master - Mandar os commits do repositorio remoto para o local  
+$git push - 
+$ git push origin master - Mandar os commits de um repositorio local para um repositorio remoto
+$ git remote - 
+$ git remote -v - Ver o caminho do repositorio 
+$ git remote add repo-on-GitHub - Tem o mesmo efeito do comando origin
+$ git remote add origin
+$ git remote add upstream https://github.com/udacity/course-collaboration-travel-plans.git
+Conecta ao repositorio de um mantenedor como fonte para que os commits dele sejam trazidos para o local. 
+Observar que UPSTREAM assim como ORIGIN é uma palavra qualquer sem conteudo especial para o git
+Para RENOMEAR usa-se $git remote rename origin/upstream (>)  mine/source-repo
+Nao se usa o > usei para representar que tanto origin quanto upstream são nomes standard 
+mine e source são bons nomes sucessivamente para renomear
+
+
+$ git fetch - Em caso de haver alterações no remoto que nao foram pull. 
+Ele adicionara o conteudo dos commits do repo remoto porem nao move o branch local
+Caso queira que o repositorio local se mova tem que fazer um $Git merge origin master - Ira atualizar o branch local 
+os commit (s) na ramificação remota são copiados para o repositório local
+o ramo de rastreamento local (por exemplo, origem / mestre) é movido para apontar para a confirmação mais recente
+É como dividir um git pull em das fases - 1 fase $git fetch 2 fase $git pull
+MELHOR USO É QUANDO A BRANCH REMOTA E LOCAL TEM ALTERAÇÕES QUE AMBAS N POSSUEM 
+eX: 1) Git commit no local - 
+2) $Git fetch origin master - Ira copiar alterações do remote pro local
+3) $git merge origin/master - Ira efetivamente confirmar as alterações do remote pro local
+4) $git push origin master - Ira levar ao repositorio remoto as alterações antes feitas no local 
+
+# to make sure I'm on the correct branch for merging
+$ git checkout master
+
+# merge in Lam's changes
+$ git merge upstream/master
+
+# send Lam's changes to *my* remote
+$ git push origin master
+
+
+$fork (duplicar) - Dividir em uma copia identica - Serve para trabalhar com repositorios de outros programadores
+É provisionado pelo Github - Nao existe um comando fork - Por isso ele é criado no repositorio remoto. 
+O clone é outra situação 
+Pull request - Quando se da um fork no repositorio de alguem - Da push para trabalhar em novos commits -
+Depois Pull para o Fork - CASO SEJA ACEITE o pull requeste sera adicionado como um fetch no repositorio do mantenedor
+Caso de um merge as alterações serao feitas no repositorio do mantenedor/ 
+A master branch ira apontar para o novo commit mesclado.
+
+Create a new repository in command line
+echo "# Git-github-pratice" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/jgoncsilva/Git-github-pratice.git
+git push -u origin master
+
+or push an existing repository from the command line
+git remote add origin https://github.com/jgoncsilva/Git-github-pratice.git
+$ git remote add (upstream) https://github.com/udacity/course-collaboration-travel-plans.git - 
+Caso queira adicionar os commits de um repositorio de mantenedor, nos dando a conexao com este no nosso local
+git push -u origin master
+
+$ git shortlog - Ver quantos commits cada autor adicionou ao repositorio local
+$ git shortlog -s -n - Mostrar o numero dos commits e pra colocar em ordem numerica 
+$ git log --author="jgoncsilva" - Numero de commits por autor - Se houver mais de um jgoncsilva ele mostrara
+$ git log --author=Paul - Testar 
+Importante usar " " aspas duplas/double quotes
+
+
+--grep - filtra commits
+$ git log --grep=bug - Filtra commits com a palavra bug
+$ git log --grep bug
+git log --grep="unit tests" - Caso precise usar espaço usar sempre aspas. Acontece no caso de procurar algo especifico
+git log --grep "css bug"
+
+$ git rebase -i HEAD~3 - Pega os ultimos 3 commits e transforma em um so 
+O numero 3 é relacionado a quantos commits quer reunir pra voltar atras 
+Uma boa pratica é fazer uma branch de backup antes disto
+
+
+
+
+
+
+SHELL Command
+
+- echo – Mesma coisa que o Print em Python
+! – Repetiçao
+‘ ‘ -  Ao digitar algo no shel e ele tratar isso de forma esquisito coloca aspas 
+$ Indica uma variavel shell – Vai dizer o Size do terminal.
+LS – Versão resumida da palavra lista – 
+Cd – Change directory – Mudar de diretorio 
+Cd .. – Parent Directory
+; - Permite escrever 2 comandos numa mesma linha
+Pwd – Print working directory – Qualquer outro diretorio que o shel esta a procura.
+
+  / - Usa barra normal para dividir o nome dos diretorios. –
+A string acima é chamada -  PATH
+Ls ~ - Diretorio Principal 
+Ls -l – é uma opção do ls – Imprimira uma lista longa e detalhada dos arquivos. 
+O Shel permite combinar noms de arquivos com um padrão. 
+Imagine que voce deseja listar todos os arquivos PDF do diretorio docuemntos. Para isso usamos o *.PDF
+rm -rf .git - Excluiu um diretorio .git que eu havia criado by mistake na area de trabalho.
+
+

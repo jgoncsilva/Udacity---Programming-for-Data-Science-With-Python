@@ -1,0 +1,51 @@
+ls - used to list files and directories
+mkdir - used to create a new directory
+cd - usado para alterar diretorios
+rm - remover arquivos
+
+Criar diretorio mkdir -p udacity-git-course/new-git-project && cd $_
+
+giClonar $ git clone https://github.com/libgit2/libgit2
+
+Sequencia de comando git para exibir os dados git a
+$ cd C:/Users/user/my_project
+$ git init
+$ git add *.c
+$ git add LICENSE
+$ git commit -m 'Initial project version'
+
+git status - Diz em qual branch esta
+Quantos comitts foram feitos 
+em que estado esta o repositorio
+
+Arquivo nao rastreado ex.
+$ echo 'My Project' > README
+$ git status 
+ use "git rm --cached <file>..." to unstage)
+
+Mudar arquivo que ja foi rastreado
+$ git log - Commits existentes (K J Descer e subir) 
+q - sair 
+$ git log --oneline - Mostra a versao em linha mostrando o SHA e o que foi alterado
+(serve para revisar os commits de um repositorio)
+$git log -p - Mudanças no codigo ou patch feitas nos arquivos
+(Diff e patch) São a mesma coisa
+$ Git Show - apresenta informações sobre o commit em questao 
+
+ID - SHA apresenta informações sobre esse commit
+
+git log -p --stat - Exibi informações estatisticasacima das informações do patch
+git log -p -w - Mostrar as informações do patch mas nao destaca linhas nas quais ocorreram alterações
+nos espaços em branco
+
+git show - Mostra o commit, autor, data , mensagem do commit, informação patch
+
+--stat - Para mostrar quantos arquivos foram modificados e o numero de linhas que foram adicionadas/removidas 
+-p - Se o stat for usado tem que usar -p pra mostrar o patch. Caso contrario nao mostra
+-w - ignorar mudanças de espaço em branco 
+
+git add - Adiciona arquivos do diretorio de trabalho pra o na area temporaria (staging index)
+git commit - pega arquivos da area temporaria e salva no repositorio
+git diff - Diferença entre duas versoes de dois arquivos. Output igual ao do git log-p
+
+git rm --cached 
