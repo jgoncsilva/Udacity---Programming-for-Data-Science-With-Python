@@ -39,7 +39,7 @@ My experience: This project was very interesting to insert me in the world of da
 
 In this project, the student had to make use of Python to explore data related to bike share systems for three major cities in the United States — Chicago, New York City, and Washington.I had to write code to (a) import the data and answer interesting questions about it by computing descriptive statistics, and (b) write a script that takes in raw input to create an interactive experience in the terminal to present these statistics.
 
-Progress[here](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/2ND%20-%20PROJECT%20(Python)/Course_Training)
+Progress [here](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/2ND%20-%20PROJECT%20(Python)/Course_Training)
 
 ### Project Submission
 
@@ -52,6 +52,11 @@ In this project, you will create a GitHub repository and your local repository. 
 This project consisted in using Git and GitHub with a simulated workflow to refactor Project 2
 
 [Progress and Project](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/tree/master/3RD%20-%20PROJECT(GIT_GITHUB))
+
+# [LINK TO CERTIFICATE](https://graduation.udacity.com/confirm/DL5JT3ZR)
+
+# [CERTIFICATE](https://drive.google.com/drive/u/1/my-drive)
+
 
 
 
