@@ -55,7 +55,8 @@ This project consisted in using Git and GitHub with a simulated workflow to refa
 
 # [LINK TO CERTIFICATE](https://graduation.udacity.com/confirm/DL5JT3ZR)
 
-# [CERTIFICATE](https://drive.google.com/drive/u/1/my-drive)
+# ![CERTIFICATE](https://github.com/jgoncsilva/Udacity---Programming-for-Data-Science-With-Python/blob/master/Udacity%20CERTIFICATE.pdf)
+
 
 
 
