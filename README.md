@@ -55,7 +55,7 @@ This project consisted in using Git and GitHub with a simulated workflow to refa
 
 # [LINK TO CERTIFICATE](https://graduation.udacity.com/confirm/DL5JT3ZR)
 
-# [CERTIFICATE](https://drive.google.com/drive/u/1/my-drive)
+![](Certificate.jpg)
 
 
 
